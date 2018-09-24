@@ -6,9 +6,9 @@ This is a simple 5 days forecast app
 
 to get started 
 
-'git clone https://github.com/negouseid/beautiful-weather.git'
-'cd into beautiful-weather'
-'npm install'
+`git clone https://github.com/negouseid/beautiful-weather.git`
+`cd into beautiful-weather`
+`npm install` 
 
 ## Development server
 
