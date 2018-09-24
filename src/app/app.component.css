@@ -1,0 +1,65 @@
+.container {
+    display: flex; /* or inline-flex */
+}
+.centered {
+    text-align: center;
+}
+.weather-view {
+    flex-direction: row;
+}
+.items-returned {
+    padding: 20px;
+    display: flex;
+}
+.items-returned div p {
+    margin: 0;
+    text-align: center;
+}
+.data {
+    padding: 0 10px;
+}
+.data-container {
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 25px;
+}
+.data-container .mat-card {
+    margin: 10px 20px;
+    padding: 20px;
+    width: 75%;
+    min-width: 150px;
+}
+.search .mat-card {
+    width: 100%
+}
+h2 {
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+.search .centered {
+    text-align: center;
+}
+.search .mat-form-field {
+    margin-right: 20px;
+    line-height: 1.7;
+}
+.mat-card-content img{
+    width: 150px;
+}
+.mat-card-content p{
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+@media screen and (max-width: 480px) {
+    .data-container .mat-card {
+        width: 100%;
+    }
+    .activity {
+        display: none;
+    }
+}
+
+
