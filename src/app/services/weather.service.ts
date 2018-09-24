@@ -9,7 +9,7 @@ export class WeatherService {
 
   fiveDayForecast(city: string, metric: 'metric' | 'imperial' = 'imperial'): Observable<any> {
     return this.http.get(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${metric}&appid=c5e03a2e380341b97751366d83c9abbd&cnt=5
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${metric}&appid=c5e03a2e380341b97751366d83c9abbd&cnt=5
       `);
   }
 
