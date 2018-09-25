@@ -23,7 +23,10 @@
           <div class="items-returned" *ngFor="let item of myCity ">
             <mat-card>
               <mat-card-content>
-                  <!-- {{dateTitle(extractDate(item, 'description')) }} -->
+                  <div class="data" *ngFor="let data of item; let i=index " >
+                      <p *ngIf="i<1">{{data.dt_txt | date:'shortDate'}}</p>
+                      <p *ngIf="i<1">{{ data.weather[0].description  }} </p>
+                    </div>
                   <p *ngIf="maxTemp(extractTemps(item, 'temp_max')) > 40 && maxTemp(extractTemps(item, 'temp_max')) < 70">
                     <img src="./assets/img/cloudy-day-1.svg"></p>
                   <p *ngIf="maxTemp(extractTemps(item, 'temp_max')) > 70"><img src="./assets/img/day.svg"></p>
