@@ -287,7 +287,7 @@ describe('WeatherService', () => {
         );
       });
 
-      weatherService.fiveDayForecast().subscribe(weather => {
+      weatherService.getForecast().subscribe(weather => {
         weather = weather[0];
         expect(weather.length).toBe(2);
         expect(weather[0].dt).toEqual(1508738400);
