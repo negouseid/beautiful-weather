@@ -38,34 +38,35 @@ export class AppComponent implements OnInit  {
   ngOnInit() {}
 
   // extract the weather data
-  // async getWeatherState(city: string) {
-  //   const data = await this.weather.getForecast(city).toPromise()
-  //     .then(this.chunks);
-  //   this.myCity = data;
-  // }
-
-  forecast(city: string) {
-    this.weather.fiveDayForecast(city).subscribe(
-      data => this.fiveForecast = data,
-    );
+  async getWeatherState(city: string) {
+    const data = await this.weather.getForecast(city).toPromise()
+      .then(this.chunks);
+    this.myCity = data;
   }
+
+  // forecast(city: string) {
+  //   this.weather.fiveDayForecast(city).subscribe(
+  //     data => this.fiveForecast = data,
+  //   );
+  // }
 
   // a different approach to this problem
   // get max and min
-  // minTemp = temps => Math.min(...temps);
-  // maxTemp = temps => Math.max(...temps);
-  // extractTemps = (hourlyTemps, key) => hourlyTemps.map(item => item.main[key]);
-
+  minTemp = temps => Math.min(...temps);
+  maxTemp = temps => Math.max(...temps);
+  extractTemps = (hourlyTemps, key) => hourlyTemps.map(item => item.main[key]);
+  // extractWeather = (weatherEffect, key) => weatherEffect.map(item => item.weather[key]);
+  // dateTitle = dateOfWeek => null;
 
   // group the data into day
-  // chunks(data, size = 8) {
-  //   const array = data.list;
-  //   let results = [];
-  //   results = [];
-  //   while (array.length) {
-  //     results.push(array.splice(0, size));
-  //   }
-  //   return results;
-  // }
+  chunks(data, size = 8) {
+    const array = data.list;
+    let results = [];
+    results = [];
+    while (array.length) {
+      results.push(array.splice(0, size));
+    }
+    return results;
+  }
 
 }

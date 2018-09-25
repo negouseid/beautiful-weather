@@ -10,70 +10,51 @@
           <mat-form-field> 
             <input matInput placeholder="Search For A City" name="city" [(ngModel)]='city' >
           </mat-form-field>
-          <button mat-raised-button color="primary" (click)="forecast(city)">Submit</button>
+          <button mat-raised-button color="primary" (click)="getWeatherState(city)">Submit</button>
         </form>
     </mat-card-content>
   </mat-card>
 </div>
 
 <div class="container">
-    <div class="data-container" *ngIf="fiveForecast">
-      <div *ngFor="let item of fiveForecast.list">
-        <mat-card>
-          <mat-card-content>
-            <h2>{{ item.weather[0].description }}</h2>
-            <p *ngIf="item.weather[0].description === 'light rain'">
-              <img src="./assets/img/rainy-1.svg">
-            </p>
-            <p *ngIf="item.weather[0].description === 'broken clouds'">
-                <img src="./assets/img/cloudy-day-3.svg">
-            </p>
-            <p *ngIf="item.weather[0].description === 'scattered clouds'">
-                <img src="./assets/img/cloudy-day-1.svg">
-            </p>
-            <p *ngIf="item.weather[0].description === 'few clouds'">
-                <img src="./assets/img/cloudy-day-1.svg">
-            </p>
-            <p *ngIf="item.weather[0].description === 'clear sky'">
-                <img src="./assets/img/day.svg">
-            </p>
-            <p>
-              {{ item.main.temp_min | round }} &#8457;  /
-              {{ item.main.temp_max | round }} &#8457; 
-            </p>
-          </mat-card-content>
-        </mat-card>
 
-        <mat-card class="activity">
-          <mat-card-content>
-              <h3>Activities for today</h3>
-                <ul *ngIf="item.weather[0].description == 'clear sky' || item.weather[0].description == 'few clouds' || item.weather[0].description == 'scattered clouds'">
-                  <li>
-                      Go Biking
-                  </li>
-                  <li>
-                      play Basketball
-                  </li>
-                  <li>
-                    Go Hiking
-                  </li>
-                </ul>
-                <ul *ngIf="item.weather[0].description == 'light rain' || item.weather[0].description == 'broken clouds' ">
-                    <li>
-                        Play Games
-                    </li>
-                    <li>
-                        watch a movie
-                    </li>
-                    <li>
-                      Read a book
-                    </li>
-                  </ul>
+  
+    <div class="data-container" *ngIf="myCity">
+          <div class="items-returned" *ngFor="let item of myCity ">
+            <mat-card>
+              <mat-card-content>
+                  <!-- {{dateTitle(extractDate(item, 'description')) }} -->
+                  <p *ngIf="maxTemp(extractTemps(item, 'temp_max')) > 40 && maxTemp(extractTemps(item, 'temp_max')) < 70">
+                    <img src="./assets/img/cloudy-day-1.svg"></p>
+                  <p *ngIf="maxTemp(extractTemps(item, 'temp_max')) > 70"><img src="./assets/img/day.svg"></p>
+                  {{minTemp(extractTemps(item, 'temp_min')) | round }} &#8457; /
+                  {{maxTemp(extractTemps(item, 'temp_max')) | round }} &#8457; 
+              </mat-card-content>
+            </mat-card>
+              <!-- <mat-card>
+                  <mat-card-content>
+            <div class="data" *ngFor="let data of item" >
+  
+        
+                      <p>{{data.dt_txt | date:'fullDate'}}</p>
+                      <div >
+                              <p>{{ data.weather[0].description  }} </p>
+                              <p *ngIf="data.clouds.all === 0"> <img src="./assets/img/day.svg"></p>
+                              <p *ngIf="data.clouds.all === 24"> <img src="./assets/img/cloudy-day-1.svg"></p>
+                              <p *ngIf="data.clouds.all === 36 "> <img src="./assets/img/cloudy-day-1.svg"></p>
+                              <p *ngIf="data.rain"><img src="./assets/img/rainy-1.svg"></p>
+        
+                              <p *ngIf="data.clouds.all === 100"> </p>
+                              <span>{{ data.wind.speed }}</span>
+                              <p>{{ data.main.temp | round  }} &#8457; </p>
+                      </div>
+
+     
+             
+              
+            </div>
           </mat-card-content>
-        </mat-card>
-      </div>
-      <div>
-          <p>Credit: amCharts for the awesome animated weather icons</p>
+        </mat-card> -->
         </div>
     </div>
 </div>
